@@ -1,0 +1,8 @@
+version: "2"
+services:
+  mock:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./data.json:/data/db.json"

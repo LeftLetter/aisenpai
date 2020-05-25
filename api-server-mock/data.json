@@ -1,0 +1,14 @@
+{
+  "sentence": [{
+    "title": "mock_title"
+  }],
+  "summary": [{
+    "body": "適当なテキスト"
+  }],
+  "word": [{
+    "words": ["a", "b", "c"]
+  }],
+  "qiita": [{
+    "body": "mock_content"
+  }]
+}
