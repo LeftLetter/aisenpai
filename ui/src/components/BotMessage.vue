@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  props: ['message']
+  props: ['message'],
 }
 </script>
 
@@ -37,7 +37,7 @@ export default {
 }
 .bot-msg:before {
   position: absolute;
-  content: "";
+  content: '';
   top: 10px;
   right: 100%;
   border: 5px solid transparent;
