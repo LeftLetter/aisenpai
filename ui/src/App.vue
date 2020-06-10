@@ -22,7 +22,9 @@
         @keypress="setCanMessageSubmit"
         ref="msgArea"
       ></v-text-field>
-      <v-btn color="primary" class="ml-5" @click="send" :disabled="sending">送信</v-btn>
+      <v-btn color="primary" class="ml-5" @click="send" :disabled="sending"
+        >送信</v-btn
+      >
     </v-footer>
   </v-app>
 </template>
@@ -32,15 +34,15 @@ import UserMessage from '@/components/UserMessage.vue'
 import BotMessage from '@/components/BotMessage.vue'
 import io from 'socket.io-client'
 // import axios from 'axios'
-import uuidv4 from 'uuid/v4'
+import { v4 as uuidv4 } from 'uuid'
 
 export default {
   name: 'App',
   components: {
     UserMessage,
-    BotMessage
+    BotMessage,
   },
-  created () {
+  created() {
     // ウェルカムメッセージの送信
     this.socket.emit('welcome', { user: uuidv4() })
 
@@ -57,7 +59,7 @@ export default {
     num: 0,
     socket: io('/socket.io'),
     canMessageSubmit: false,
-    sending: false
+    sending: false,
   }),
   methods: {
     setCanMessageSubmit: function () {
@@ -77,7 +79,7 @@ export default {
       this.chat.push({
         message: this.input,
         isUser: true,
-        num: this.num++
+        num: this.num++,
       })
       this.$nextTick(() => {
         window.scrollTo(0, document.body.clientHeight)
@@ -89,14 +91,14 @@ export default {
         title: data.title || null,
         words: data.words || null,
         isUser: false,
-        num: this.num++
+        num: this.num++,
       })
       this.$nextTick(() => {
         window.scrollTo(0, document.body.clientHeight)
         this.$refs.msgArea.focus()
       })
-    }
-  }
+    },
+  },
 }
 </script>
 

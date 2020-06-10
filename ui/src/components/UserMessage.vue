@@ -4,13 +4,14 @@
       transition="slide-x-transition"
       class="msgbox user-msg mb-4 mr-5 pa-2"
       color="blue lighten-5"
-    >{{ message.message }}</v-card>
+      >{{ message.message }}</v-card
+    >
   </div>
 </template>
 
 <script>
 export default {
-  props: ['message']
+  props: ['message'],
 }
 </script>
 
@@ -23,7 +24,7 @@ export default {
 }
 .user-msg:before {
   position: absolute;
-  content: "";
+  content: '';
   top: 10px;
   left: 100%;
   border: 5px solid transparent;

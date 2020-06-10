@@ -15,31 +15,17 @@
   ],
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",
-    "editor.formatOnSave": true,
-    // "editor.detectIndentation": false,
-    // "prettier.eslintIntegration": true,
-    // "[html]": {
-    //   "editor.defaultFormatter": "esbenp.prettier-vscode",
-    //   "editor.tabSize": 2
-    // },
-    // "[css]": {
-    //   "editor.defaultFormatter": "esbenp.prettier-vscode",
-    //   "editor.tabSize": 2
-    // },
-    // "[javascript]": {
-    //   "editor.defaultFormatter": "esbenp.prettier-vscode",
-    //   "editor.tabSize": 2
-    // },
-    // "[json]": {
-    //   "editor.defaultFormatter": "esbenp.prettier-vscode",
-    //   "editor.tabSize": 2
-    // },
-    // "editor.codeActionsOnSave": {
-    //   "source.fixAll.eslint": true
-    // },
-    "vetur.format.defaultFormatter.js": "prettier-eslint",
+    "editor.formatOnSave": false,
     "editor.tabSize": 2,
     "editor.detectIndentation": false,
     "editor.insertSpaces": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "vetur.format.defaultFormatter.js": "none",
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true
+    },
   }
 }
