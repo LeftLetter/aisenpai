@@ -7,17 +7,17 @@ const Logger = require('../common/logger')
 const socketApi = {}
 socketApi.io = io
 
-io.of('/socket.io').on('connection', (socket) => {
+io.of('/socket.io').on('connection', socket => {
   Logger.getLogger().info('connected')
 
   // 新規接続時にウェルカムメッセージを送信
-  socket.on('welcome', (msg) => {
+  socket.on('welcome', msg => {
     socket.emit('message', global.WELCOME_MESSAGE)
     Logger.getLogger().info(msg)
   })
 
   // メッセージ受信
-  socket.on('message', async (msg) => {
+  socket.on('message', async msg => {
     try {
       // 時間がかかった時用のクッションメッセージ
       socket.emit('message', global.WAIT_MESSAGE)
@@ -58,7 +58,7 @@ io.of('/socket.io').on('connection', (socket) => {
         // summary: p[0].data.body,
         words: p[0].data.words,
         title: 'mock title',
-        url: ''
+        url: '',
       }
 
       socket.emit('message', result)

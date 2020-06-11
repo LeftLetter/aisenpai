@@ -10,7 +10,7 @@
     }
   },
   "categories": {
-    "app": { "appenders": ["console", "appLogs"], "level": "debug" },
+    "app": { "appenders": ["console"], "level": "debug" },
     "default": { "appenders": ["console", "appLogs"], "level": "trace" },
     "test": { "appenders": ["console", "appLogs"], "level": "info" }
   }
