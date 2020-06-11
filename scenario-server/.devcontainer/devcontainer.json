@@ -1,8 +1,6 @@
 {
   "name": "AIsenpai-Scenario-Server",
-  "dockerComposeFile": [
-    "../../docker-compose.yml"
-  ],
+  "dockerComposeFile": ["../../docker-compose.yml"],
   "service": "scenario-server",
   "shutdownAction": "none",
   "workspaceFolder": "/workspace/scenario-server",
@@ -14,9 +12,16 @@
   ],
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.tabSize": 2,
     "editor.detectIndentation": false,
-    "editor.insertSpaces": true
+    "editor.insertSpaces": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.formatOnSave": true
+    }
   }
 }
