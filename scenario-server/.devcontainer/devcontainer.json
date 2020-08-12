@@ -8,7 +8,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "eamodio.gitlens",
-    "mhutchie.git-graph"
+    "donjayamanne.githistory"
   ],
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",
