@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "プログラムの起動",
       "runtimeExecutable": "nodemon",
-      "program": "${workspaceFolder}/bin/www.js",
+      "program": "${workspaceFolder}/bin/www",
       "restart": true
     }
   ]
