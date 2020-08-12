@@ -4,6 +4,7 @@
   "service": "api-server",
   "shutdownAction": "none",
   "workspaceFolder": "/workspace/api-server",
+  "postCreateCommand": "poetry install",
   "extensions": [
     "ms-python.python",
     "ms-pyright.pyright",
