@@ -1,6 +1,8 @@
 version: "3"
 services:
   ui:
+    env_file:
+      - .ui/.env
     build:
       context: ./ui/.devcontainer
       dockerfile: Dockerfile
@@ -12,6 +14,8 @@ services:
       - "12222:8000"
       - "13333:8080"
   scenario-server:
+    env_file:
+      - ./scenario-server/.env
     build:
       context: ./scenario-server/.devcontainer
       dockerfile: Dockerfile
@@ -22,6 +26,8 @@ services:
     ports:
       - "14444:3000"
   api-server:
+    env_file:
+      - ./api-server/.env
     build:
       context: ./api-server/.devcontainer
       dockerfile: Dockerfile

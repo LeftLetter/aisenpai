@@ -1,8 +1,6 @@
 {
   "name": "AIsenpai-UI",
-  "dockerComposeFile": [
-    "../../docker-compose.yml"
-  ],
+  "dockerComposeFile": ["../../docker-compose.yml"],
   "service": "ui",
   "shutdownAction": "none",
   "workspaceFolder": "/workspace/ui",
@@ -11,7 +9,7 @@
     "esbenp.prettier-vscode",
     "octref.vetur",
     "eamodio.gitlens",
-    "mhutchie.git-graph"
+    "donjayamanne.githistory"
   ],
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",
@@ -26,6 +24,6 @@
     "[json]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
       "editor.formatOnSave": true
-    },
+    }
   }
 }
