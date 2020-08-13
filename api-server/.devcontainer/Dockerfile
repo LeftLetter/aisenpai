@@ -3,6 +3,7 @@ FROM python:3.7
 WORKDIR /workspace
 RUN pip install poetry
 RUN poetry config virtualenvs.create false
+RUN pip install ginza
 # COPY poetry.lock /workspace
 # COPY pyproject.toml /workspace
 # RUN poetry install

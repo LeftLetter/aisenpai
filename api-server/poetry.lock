@@ -144,6 +144,18 @@ version = "0.29.14"
 
 [[package]]
 category = "main"
+description = "Python binding of Darts Clone"
+marker = "python_version >= \"3.5\""
+name = "dartsclone"
+optional = false
+python-versions = "*"
+version = "0.9.0"
+
+[package.dependencies]
+Cython = "*"
+
+[[package]]
+category = "main"
 description = "Docutils -- Python Documentation Utilities"
 name = "docutils"
 optional = false
@@ -223,6 +235,22 @@ test-win = ["pytest", "pytest-rerunfailures", "mock", "cython", "nmslib", "pyemd
 
 [[package]]
 category = "main"
+description = "GiNZA, An Open Source Japanese NLP Library, based on Universal Dependencies"
+name = "ginza"
+optional = false
+python-versions = "*"
+version = "3.1.2"
+
+[package.dependencies]
+ja_ginza = ">=3.1.0,<3.2.0"
+spacy = ">=2.2.3"
+
+[package.dependencies.SudachiPy]
+python = ">=3.5"
+version = ">=0.4.2"
+
+[[package]]
+category = "main"
 description = "HTTP/2-based RPC framework"
 name = "grpcio"
 optional = false
@@ -263,6 +291,26 @@ name = "itsdangerous"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 version = "1.1.0"
+
+[[package]]
+category = "main"
+description = "Japanese multi-task CNN trained on UD-Japanese BCCWJ v2.4 + KWDLC. Assigns word2vec token vectors, POS tags, dependency parse and named entities."
+name = "ja-ginza"
+optional = false
+python-versions = "*"
+version = "3.1.0"
+
+[package.dependencies]
+ja_ginza_dict = ">=3.1.0,<3.2.0"
+spacy = ">=2.2.3"
+
+[[package]]
+category = "main"
+description = "SudachiDict for ja_ginza (SudachiDict is originally developed by Works Applications Tokushima Laboratory of AI and NLP)"
+name = "ja-ginza-dict"
+optional = false
+python-versions = "*"
+version = "3.1.0"
 
 [[package]]
 category = "main"
@@ -462,6 +510,15 @@ test = ["mock", "moto", "pathlib2", "responses", "boto3", "google-compute-engine
 
 [[package]]
 category = "main"
+description = "Sorted Containers -- Sorted List, Sorted Dict, Sorted Set"
+marker = "python_version >= \"3.5\""
+name = "sortedcontainers"
+optional = false
+python-versions = "*"
+version = "2.1.0"
+
+[[package]]
+category = "main"
 description = "Industrial-strength Natural Language Processing (NLP) in Python"
 name = "spacy"
 optional = false
@@ -502,6 +559,19 @@ name = "srsly"
 optional = false
 python-versions = "*"
 version = "1.0.2"
+
+[[package]]
+category = "main"
+description = "Python version of Sudachi, the Japanese Morphological Analyzer"
+marker = "python_version >= \"3.5\""
+name = "sudachipy"
+optional = false
+python-versions = "*"
+version = "0.4.9"
+
+[package.dependencies]
+dartsclone = ">=0.9.0,<0.10.0"
+sortedcontainers = ">=2.1.0,<2.2.0"
 
 [[package]]
 category = "main"
@@ -620,7 +690,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "d839ff24713dfd49b6c7775bbf3d97dc1c17cff9d0fff40a89e7fd4a7f8199e4"
+content-hash = "8216f1960fbdbabbfc96531a69533ab9e7773cf0d77f893b555786cb1da7ea3a"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -730,6 +800,24 @@ cython = [
     {file = "Cython-0.29.14-cp38-cp38-win_amd64.whl", hash = "sha256:a0f495a4fe5278aab278feee35e6102efecde5176a8a74dd28c28e3fc5c8d7c7"},
     {file = "Cython-0.29.14.tar.gz", hash = "sha256:e4d6bb8703d0319eb04b7319b12ea41580df44fd84d83ccda13ea463c6801414"},
 ]
+dartsclone = [
+    {file = "dartsclone-0.9.0-cp36-cp36m-macosx_10_13_x86_64.whl", hash = "sha256:9d7776a98a29a09f27605b2a38776c098f967065449fabc07b8417bee2ac2695"},
+    {file = "dartsclone-0.9.0-cp36-cp36m-manylinux1_i686.whl", hash = "sha256:31526b6be82f2b6dd972802483298c964735044ced874d86a41aaa2767946b05"},
+    {file = "dartsclone-0.9.0-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:86773da42e67bc88429c5dbfb1bbd730ada89705cd19a22818dbda07022acdc3"},
+    {file = "dartsclone-0.9.0-cp36-cp36m-win32.whl", hash = "sha256:fbd6bedaa48d6e2a55bf3c3e2d7e237dc16011c94e095378be4cf38a2d2be6f3"},
+    {file = "dartsclone-0.9.0-cp36-cp36m-win_amd64.whl", hash = "sha256:d82d9291f76bf6d884e1856220bf4eb5e2782b442e9862c5eb46cd7a5e78b0d1"},
+    {file = "dartsclone-0.9.0-cp37-cp37m-macosx_10_13_x86_64.whl", hash = "sha256:57e94d298109fbeacfbec3ea39cb5be02c1e662d9a026f6bbe629725f4bcf714"},
+    {file = "dartsclone-0.9.0-cp37-cp37m-manylinux1_i686.whl", hash = "sha256:ac706d78f83e0ab9281b56136e2c90179b68e444cde48ebe74ddb3462d608499"},
+    {file = "dartsclone-0.9.0-cp37-cp37m-manylinux1_x86_64.whl", hash = "sha256:dc23a841448f6382903cf893c99b54713a4ddc362f8af39d62e8b2b8eac94377"},
+    {file = "dartsclone-0.9.0-cp37-cp37m-win32.whl", hash = "sha256:5771e089b564fd79edc2f3a21b03474bf4f115a8251d1b185c70110b334cf33b"},
+    {file = "dartsclone-0.9.0-cp37-cp37m-win_amd64.whl", hash = "sha256:9ec3051f2d3a94ba0d8edf3798bc14fd905b7dff6dbdc982f32ceba18a767bc4"},
+    {file = "dartsclone-0.9.0-cp38-cp38-macosx_10_13_x86_64.whl", hash = "sha256:b967698e94ce991a12ab8e98d02968beeec2bb739de24ffc6a273284abcf83c9"},
+    {file = "dartsclone-0.9.0-cp38-cp38-manylinux1_i686.whl", hash = "sha256:eb353030aa25355ccc3bf3b98c97b3ef06263fe5050cb92a62bf50aba2472884"},
+    {file = "dartsclone-0.9.0-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:ee0b39c73cac7c3b25b40c178ee239c53c3ebebac57551535a1d534c1d55fa0b"},
+    {file = "dartsclone-0.9.0-cp38-cp38-win32.whl", hash = "sha256:bc29f27e654253d29ed242422c45a6e0cc90d291165cd753ca0d34bdee15b180"},
+    {file = "dartsclone-0.9.0-cp38-cp38-win_amd64.whl", hash = "sha256:b1e0cbca0e1865b6b5238580a015cf40077fea31548b0a98152bca8c46dea0e6"},
+    {file = "dartsclone-0.9.0.tar.gz", hash = "sha256:311bc24cd13ef9a8c3632bb3e5986f97ca53cf28420501b2cc343859b0c8ce26"},
+]
 docutils = [
     {file = "docutils-0.15.2-py2-none-any.whl", hash = "sha256:9e4d7ecfc600058e07ba661411a2b7de2fd0fafa17d1a7f7361cd47b1175c827"},
     {file = "docutils-0.15.2-py3-none-any.whl", hash = "sha256:6c4f696463b79f1fb8ba0c594b63840ebd41f059e92b31957c46b74a4599b6d0"},
@@ -776,6 +864,9 @@ gensim = [
     {file = "gensim-3.8.3-cp38-cp38-win_amd64.whl", hash = "sha256:4e34cf2e50f3eab3e303da46089ea4972567bf216e28f7535ada155770784ac8"},
     {file = "gensim-3.8.3.tar.gz", hash = "sha256:786adb0571f75114e9c5f7a31dd2e6eb39a9791f22c8757621545e2ded3ea367"},
 ]
+ginza = [
+    {file = "ginza-3.1.2.tar.gz", hash = "sha256:86f8bad95dbf33b43d484f81595367170222e2dc25e7d80aae426410e5075e4c"},
+]
 grpcio = [
     {file = "grpcio-1.29.0-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:e90f3d11185c36593186e5ff1f581acc6ddfa4190f145b0366e579de1f52803b"},
     {file = "grpcio-1.29.0-cp27-cp27m-manylinux2010_i686.whl", hash = "sha256:5024b26e17a1bfc9390fb3b8077bf886eee02970af780fd23072970ef08cefe8"},
@@ -820,6 +911,12 @@ importlib-metadata = [
 itsdangerous = [
     {file = "itsdangerous-1.1.0-py2.py3-none-any.whl", hash = "sha256:b12271b2047cb23eeb98c8b5622e2e5c5e9abd9784a153e9d8ef9cb4dd09d749"},
     {file = "itsdangerous-1.1.0.tar.gz", hash = "sha256:321b033d07f2a4136d3ec762eac9f16a10ccd60f53c0c91af90217ace7ba1f19"},
+]
+ja-ginza = [
+    {file = "ja_ginza-3.1.0.tar.gz", hash = "sha256:c004c75834cc63ee789d5edd81a29d5058761473025ef6aa1c5a6b3376877f5a"},
+]
+ja-ginza-dict = [
+    {file = "ja_ginza_dict-3.1.0-1.tar.gz", hash = "sha256:f134ca9cf2e41590f7bcd13b7a25d42163cd3d414fc1a53661a9148efb9a3d2d"},
 ]
 jinja2 = [
     {file = "Jinja2-2.11.2-py2.py3-none-any.whl", hash = "sha256:f0a4641d3cf955324a89c04f3d94663aa4d638abe8f733ecd3582848e1c37035"},
@@ -991,6 +1088,7 @@ regex = [
     {file = "regex-2020.5.14.tar.gz", hash = "sha256:ce450ffbfec93821ab1fea94779a8440e10cf63819be6e176eb1973a6017aff5"},
 ]
 requests = [
+    {file = "requests-2.23.0-py2.7.egg", hash = "sha256:5d2d0ffbb515f39417009a46c14256291061ac01ba8f875b90cad137de83beb4"},
     {file = "requests-2.23.0-py2.py3-none-any.whl", hash = "sha256:43999036bfa82904b6af1d99e4882b560e5e2c68e5c4b0aa03b655f3d7d73fee"},
     {file = "requests-2.23.0.tar.gz", hash = "sha256:b3f43d496c6daba4493e7c431722aeb7dbc6288f52a6e04e7b6023b0247817e6"},
 ]
@@ -1028,6 +1126,10 @@ six = [
 smart-open = [
     {file = "smart_open-2.0.0.tar.gz", hash = "sha256:555962abf982faff8a8aeb65e0695474e3091f604826055782beffa8400e4e4e"},
 ]
+sortedcontainers = [
+    {file = "sortedcontainers-2.1.0-py2.py3-none-any.whl", hash = "sha256:d9e96492dd51fae31e60837736b38fe42a187b5404c16606ff7ee7cd582d4c60"},
+    {file = "sortedcontainers-2.1.0.tar.gz", hash = "sha256:974e9a32f56b17c1bac2aebd9dcf197f3eb9cd30553c5852a3187ad162e1a03a"},
+]
 spacy = [
     {file = "spacy-2.2.4-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:fd740cb1b50cd86c648f64313be4734b0c2a2931d83761f46821061f42d791a3"},
     {file = "spacy-2.2.4-cp36-cp36m-manylinux1_x86_64.whl", hash = "sha256:01202066f75c7f2cfeb9c167c3184b5b0a9d465604b0ca553bd9e788353c5905"},
@@ -1053,6 +1155,18 @@ srsly = [
     {file = "srsly-1.0.2-cp38-cp38-manylinux1_x86_64.whl", hash = "sha256:18bad26c34cf5a8853fbf018fd168a7bf2ea7ce661e66476c25dac711cb79c9b"},
     {file = "srsly-1.0.2-cp38-cp38-win_amd64.whl", hash = "sha256:29434753a77481ec6129991f4116f983085cc8005c1ad963261124842e8c05fc"},
     {file = "srsly-1.0.2.tar.gz", hash = "sha256:59258b81d567df207f8a0a33c4b5fa232afccf1d927c8ce3ba5395bfd64c0ed8"},
+]
+sudachipy = [
+    {file = "SudachiPy-0.4.9-cp36-cp36m-macosx_10_14_x86_64.whl", hash = "sha256:fc67119e3d6bcafc3fb34e58a86dae1b7479034ddb904b03693f389ebc7b68ce"},
+    {file = "SudachiPy-0.4.9-cp36-cp36m-win32.whl", hash = "sha256:9d1555885efa46cd74959243d9364def7da2e6ae82cd40743992241f9600153a"},
+    {file = "SudachiPy-0.4.9-cp36-cp36m-win_amd64.whl", hash = "sha256:10b2e47f42c56e09ad1caa680cae33fedb6603f95d8104c3039cb6c6d8607f02"},
+    {file = "SudachiPy-0.4.9-cp37-cp37m-macosx_10_14_x86_64.whl", hash = "sha256:8d585728c4a54cc5340ccc0a8d0b44c4db3f5964bceeef85a08b603f93a9b083"},
+    {file = "SudachiPy-0.4.9-cp37-cp37m-win32.whl", hash = "sha256:f76d60cf7f8c1b007744f269d79d7e4fa34429952866e153ac8203c31e396a64"},
+    {file = "SudachiPy-0.4.9-cp37-cp37m-win_amd64.whl", hash = "sha256:eea86f49d4996f5ac3f9cdd2f877eb71a890e2f06f0a248d3f16e3aff528005d"},
+    {file = "SudachiPy-0.4.9-cp38-cp38-macosx_10_14_x86_64.whl", hash = "sha256:a13669e2e52e9aa3c54f4f3b00dd46380d6749b6e5320fd15d974bbb330c7f8a"},
+    {file = "SudachiPy-0.4.9-cp38-cp38-win32.whl", hash = "sha256:103c4ef459b2d12f09330e520ec38aa9375cfcdef5177b7b2542756578cc6f4b"},
+    {file = "SudachiPy-0.4.9-cp38-cp38-win_amd64.whl", hash = "sha256:60a5e712ff00f9decc9d956179a92059fcfe0ecbffb33ba6ad1c232b613ac92d"},
+    {file = "SudachiPy-0.4.9.tar.gz", hash = "sha256:4d724ce8a5b96f53a348744d5b90477a0b25b18f7cad2e908c7100701425bb94"},
 ]
 tenacity = [
     {file = "tenacity-6.2.0-py2.py3-none-any.whl", hash = "sha256:5a5d3dcd46381abe8b4f82b5736b8726fd3160c6c7161f53f8af7f1eb9b82173"},
