@@ -1,6 +1,8 @@
 {
   "name": "AIsenpai-API-Server",
-  "dockerComposeFile": ["../../docker-compose.yml"],
+  "dockerComposeFile": [
+    "../../docker-compose.yml"
+  ],
   "service": "api-server",
   "shutdownAction": "none",
   "workspaceFolder": "/workspace/api-server",
@@ -29,8 +31,11 @@
     ],
     "python.formatting.provider": "black",
     // "python.formatting.blackPath": "/usr/local/bin/black",
-    "editor.tabSize": 2,
+    "editor.tabSize": 4,
     "editor.detectIndentation": false,
-    "editor.insertSpaces": true
+    "editor.insertSpaces": true,
+    "[json]": {
+      "editor.tabSize": 2,
+    },
   }
 }
