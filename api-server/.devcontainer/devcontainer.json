@@ -19,7 +19,6 @@
     "python.pythonPath": "/usr/local/bin/python",
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
-    // "python.linting.flake8Path": "/usr/local/bin/flake8",
     "python.linting.flake8Args": [
       "--ignore=E203",
       "--ignore=E266",
@@ -30,12 +29,17 @@
       "--max-complexity=18"
     ],
     "python.formatting.provider": "black",
-    // "python.formatting.blackPath": "/usr/local/bin/black",
     "editor.tabSize": 4,
     "editor.detectIndentation": false,
     "editor.insertSpaces": true,
     "[json]": {
       "editor.tabSize": 2,
     },
+    "[python]": {
+      "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+      },
+      "editor.tabSize": 4,
+    }
   }
 }
