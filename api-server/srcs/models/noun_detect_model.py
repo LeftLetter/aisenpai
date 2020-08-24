@@ -1,8 +1,10 @@
 """テキストの中からQiitaのタグに含まれる名詞を抜き出すモデル"""
 import json
 from pathlib import Path
-from flask import current_app
+from threading import Lock
+
 import spacy
+from flask import current_app
 
 
 class GinzaWrapper:
@@ -10,21 +12,37 @@ class GinzaWrapper:
     テキストの中からQiitaのタグに含まれる名詞を抜き出すモデルクラス
     """
 
-    def __init__(self):
-        self.nlp = spacy.load("ja_ginza")
-        self.dic_path = (
+    _instance = None
+    _lock = Lock()
+
+    def __new__(cls):
+        raise NotImplementedError("")
+
+    @classmethod
+    def __internal_new__(cls):
+        cls._nlp = spacy.load("ja_ginza")
+        cls._dic_path = (
             Path(str(current_app.root_path)) / "resources/tags/qiita_tag.json"
         )
-        # タグ読み込み
-        self.tags = json.load(open(self.dic_path))
-        self.logger = current_app.logger
+        cls._tags = json.load(open(cls._dic_path))
+        cls._logger = current_app.logger
+
+        return super().__new__(cls)
+
+    @classmethod
+    def get_instance(cls):
+        if not cls._instance:
+            with cls._lock:
+                cls._instance = cls.__internal_new__()
+
+        return cls._instance
 
     def get_noun(self, sentence):
         """
-        テキストの中からQiitaのタグに含まれる名詞を抜き出すモデルクラス
+        テキストの中からQiitaのタグに含まれる名詞を抜き出す
         """
         try:
-            doc = self.nlp(sentence)
+            doc = self._nlp(sentence)
             # 名詞抜き出し
             nouns = []
             for sent in doc.sents:
@@ -33,11 +51,11 @@ class GinzaWrapper:
             # タグに含まれる名詞のみ返却
             results = []
             for noun in nouns:
-                for tag in self.tags:
+                for tag in self._tags:
                     if noun == tag["id"]:
                         results.append(noun)
 
             return results
         except Exception as error:
-            self.logger.error(error)
+            self._logger.error(error)
             return []
