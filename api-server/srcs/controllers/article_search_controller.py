@@ -3,7 +3,7 @@ from flask import Blueprint, current_app, jsonify, request
 
 from ..models.article_search_model import QiitaModel
 
-app = Blueprint("synonym", __name__)
+app = Blueprint("article", __name__)
 
 
 @app.route("/api/v1/article")
@@ -16,8 +16,7 @@ def get_synonym():
     response = {"articles": []}
     try:
         logger.info("start article")
-        # sentence = request.args.get("sentence")
-        words = request.args.get("words")
+        words = request.args.getlist("words")
 
         response = qiita_model.search_qiita_article(words)
 
