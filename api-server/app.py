@@ -1,11 +1,7 @@
 """APIサーバのエントリーポイント"""
 from flask import Flask
 
-from srcs.controllers import (
-    article_search_controller,
-    cache_controller,
-    related_terms_controller,
-)
+from srcs.controllers import article_search_controller, related_terms_controller
 from srcs.models.cache_model import EtcdWrapper
 from srcs.models.noun_detect_model import GinzaWrapper
 from srcs.models.related_terms_model import FasttextWrapper
@@ -25,8 +21,8 @@ app = Flask(__name__)
 
 # ルーティング設定
 app.register_blueprint(related_terms_controller.app)
-app.register_blueprint(cache_controller.app)
 app.register_blueprint(article_search_controller.app)
+# app.register_blueprint(cache_controller.app)
 
 
 # # 入力文章に似た文章の獲得

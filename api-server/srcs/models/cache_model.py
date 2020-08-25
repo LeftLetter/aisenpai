@@ -1,5 +1,6 @@
 """キャッシュサーバであるetcdを操作するモデル"""
 import json
+import os
 from threading import Lock
 
 import etcd3
@@ -18,7 +19,7 @@ class EtcdWrapper:
 
     @classmethod
     def __internal_new__(cls):
-        cls._etcd = etcd3.client(host="etcd", port=2379)
+        cls._etcd = etcd3.client(host="api-server-cache", port=os.environ["ETCD_PORT"])
         return super().__new__(cls)
 
     @classmethod
