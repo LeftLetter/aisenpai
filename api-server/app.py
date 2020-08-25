@@ -1,9 +1,15 @@
 """APIサーバのエントリーポイント"""
 from flask import Flask
-from srcs.controllers import related_terms_controller
-from srcs.controllers import cache_controller
 
-# from srcs.controllers import article_search_controller
+from srcs.controllers import (
+    article_search_controller,
+    cache_controller,
+    related_terms_controller,
+)
+from srcs.models.cache_model import EtcdWrapper
+from srcs.models.noun_detect_model import GinzaWrapper
+from srcs.models.related_terms_model import FasttextWrapper
+
 # from flask.logging import create_logger
 # import json
 # from distutils.util import strtobool
@@ -20,7 +26,7 @@ app = Flask(__name__)
 # ルーティング設定
 app.register_blueprint(related_terms_controller.app)
 app.register_blueprint(cache_controller.app)
-# app.register_blueprint(article_search_controller.app)
+app.register_blueprint(article_search_controller.app)
 
 
 # # 入力文章に似た文章の獲得
@@ -143,8 +149,13 @@ app.register_blueprint(cache_controller.app)
 #     # res[0]['rendered_body'] = text
 
 #     return jsonify({'body': 'mock_content'})
+def init_instances():
+    EtcdWrapper.get_instance()
+    GinzaWrapper.get_instance()
+    FasttextWrapper.get_instance()
 
 
 if __name__ == "__main__":
+    init_instances()
     app.debug = True
     app.run(host="0.0.0.0")

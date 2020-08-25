@@ -1,9 +1,11 @@
 """質問の中からQiitaのタグに含まれる名詞を抜き出し、fastTextで関連語を導出するコントローラ"""
-from flask import Blueprint, current_app, request, jsonify
-from ..models.related_terms_model import FasttextWrapper
-from ..models.noun_detect_model import GinzaWrapper
-from ..models.cache_model import EtcdWrapper
 import json
+
+from flask import Blueprint, current_app, jsonify, request
+
+from ..models.cache_model import EtcdWrapper
+from ..models.noun_detect_model import GinzaWrapper
+from ..models.related_terms_model import FasttextWrapper
 
 app = Blueprint("synonym", __name__)
 
@@ -13,6 +15,8 @@ def get_synonym():
     """
     質問の中からQiitaのタグに含まれる名詞を抜き出し、fastTextで関連語を導出するコントローラ
     """
+    ginza = GinzaWrapper.get_instance()
+    etcd = EtcdWrapper.get_instance()
     logger = current_app.logger
     response = {"words": []}
     try:
@@ -20,12 +24,11 @@ def get_synonym():
         sentence = request.args.get("sentence")
 
         # 既にキャッシュに結果が存在すれば使い回して高速化
-        etcd = EtcdWrapper()
         if etcd.cache_exists(sentence):
             return jsonify(json.loads(etcd.get_cache(sentence)))
         else:
             # GiNZA（SudachiPy）による名詞抽出
-            noun_list = GinzaWrapper().get_noun(sentence)
+            noun_list = ginza.get_noun(sentence)
             # fastTextで意味の近い単語を抽出
             get_synonym_core(noun_list, response)
             logger.info("finish synonym")
@@ -41,12 +44,11 @@ def get_synonym():
         return jsonify({"error": "error"})
 
 
-# TODO 高速化
 def get_synonym_core(noun_list, response):
     """
     fastTextで意味の近い単語を抽出
     """
-    ft = FasttextWrapper()
+    ft = FasttextWrapper.get_instance()
     for noun in noun_list:
         similar_words = ft.get_similar_words(noun.lower())
         record = {"keyword": noun, "similarWords": []}

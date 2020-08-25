@@ -1,29 +1,54 @@
-"""キャッシュサーバであるEtcdを操作するモデル"""
+"""キャッシュサーバであるetcdを操作するモデル"""
 import json
+from threading import Lock
+
 import etcd3
 
 
 class EtcdWrapper:
     """
-    キャッシュサーバであるEtcdを操作するモデルクラス
+    キャッシュサーバであるetcdを操作するモデルクラス
     """
 
-    def __init__(self):
-        # etcd 初期化
-        self.etcd = etcd3.client(host="etcd", port=2379)
+    _instance = None
+    _lock = Lock()
+
+    def __new__(cls):
+        raise NotImplementedError("")
+
+    @classmethod
+    def __internal_new__(cls):
+        cls._etcd = etcd3.client(host="etcd", port=2379)
+        return super().__new__(cls)
+
+    @classmethod
+    def get_instance(cls):
+        if not cls._instance:
+            with cls._lock:
+                cls._instance = cls.__internal_new__()
+
+        return cls._instance
 
     def get_cache(self, key):
-        value = self.etcd.get(key)
+        """
+        キャッシュを取得する
+        """
+        value = self._etcd.get(key)
         return value[0].decode()
 
     def put_cache(self, key, value):
+        """
+        キャッシュを追加する
+        """
         jsonstring = json.dumps(value, ensure_ascii=False)
-        self.etcd.put(key, jsonstring)
+        self._etcd.put(key, jsonstring)
 
     def cache_exists(self, key):
-        value = self.etcd.get(key)
+        """
+        キャッシュの存在判定をする
+        """
+        value = self._etcd.get(key)
         if value[0] is None:
-            # cache doesn't exist
             return False
         else:
             return True
