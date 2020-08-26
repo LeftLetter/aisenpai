@@ -1,7 +1,9 @@
 """APIサーバのエントリーポイント"""
 from flask import Flask
+from waitress import serve
 
 from srcs.controllers import article_search_controller, related_terms_controller
+from srcs.models.article_search_model import QiitaModel
 from srcs.models.cache_model import EtcdWrapper
 from srcs.models.noun_detect_model import GinzaWrapper
 from srcs.models.related_terms_model import FasttextWrapper
@@ -145,13 +147,17 @@ app.register_blueprint(article_search_controller.app)
 #     # res[0]['rendered_body'] = text
 
 #     return jsonify({'body': 'mock_content'})
+
+
 def init_instances():
     EtcdWrapper.get_instance()
     GinzaWrapper.get_instance()
     FasttextWrapper.get_instance()
+    QiitaModel.get_instance()
 
+
+with app.app_context():
+    init_instances()
 
 if __name__ == "__main__":
-    init_instances()
-    app.debug = True
-    app.run(host="0.0.0.0")
+    serve(app, host="0.0.0.0", port=5000)
