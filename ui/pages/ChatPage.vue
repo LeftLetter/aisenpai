@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <div class="bg">
     <div class="chatarea">
       <transition-group tag="div" name="list">
         <div v-for="message in chat" :key="message.num">
@@ -14,19 +14,19 @@
     </div>
     <v-footer fixed height="80px">
       <v-text-field
-        label="入力してください..."
-        required
+        ref="msgArea"
         v-model="input"
+        label="質問を入力してみよう"
+        required
         :disabled="sending"
         @keyup.enter="send"
         @keypress="setCanMessageSubmit"
-        ref="msgArea"
       ></v-text-field>
-      <v-btn color="primary" class="ml-5" @click="send" :disabled="sending"
+      <v-btn color="primary" class="ml-5" :disabled="sending" @click="send"
         >送信</v-btn
       >
     </v-footer>
-  </v-app>
+  </div>
 </template>
 
 <script>
@@ -42,30 +42,31 @@ export default {
     UserMessage,
     BotMessage,
   },
-  created() {
-    // ウェルカムメッセージの送信
-    this.socket.emit('welcome', { user: uuidv4() })
-
-    // メッセージ受信
-    this.socket.on('message', data => {
-      this.showBotInput(data)
-      console.log(data)
-      this.sending = false
-    })
-  },
   data: () => ({
     chat: [],
     input: '',
     num: 0,
-    socket: io('/socket.io'),
+    socket: null,
     canMessageSubmit: false,
     sending: false,
   }),
+  mounted() {
+    this.socket = io('/socket.io')
+
+    // ウェルカムメッセージの送信
+    this.socket.emit('welcome', { user: uuidv4() })
+
+    // メッセージ受信
+    this.socket.on('message', (data) => {
+      this.showBotInput(data)
+      this.sending = false
+    })
+  },
   methods: {
-    setCanMessageSubmit: function () {
+    setCanMessageSubmit() {
       this.canMessageSubmit = true
     },
-    send: async function () {
+    send() {
       if (!this.canMessageSubmit) {
         return
       }
@@ -75,7 +76,7 @@ export default {
       this.sending = true
       this.input = ''
     },
-    showUserInput: function () {
+    showUserInput() {
       this.chat.push({
         message: this.input,
         isUser: true,
@@ -85,7 +86,7 @@ export default {
         window.scrollTo(0, document.body.clientHeight)
       })
     },
-    showBotInput: function (data) {
+    showBotInput(data) {
       this.chat.push({
         message: data.summary || data,
         title: data.title || null,
@@ -103,14 +104,21 @@ export default {
 </script>
 
 <style scoped>
+.bg {
+  height: 100vh;
+  background-color: #f9f9f9;
+}
+
 .chatarea {
   margin-bottom: 120px;
   margin-top: 20px;
 }
+
 .list-enter-active,
 .list-leave-active {
   transition: all 0.5s;
 }
+
 .list-enter,
 .list-leave-to {
   opacity: 0;
