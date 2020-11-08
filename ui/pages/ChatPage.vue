@@ -55,7 +55,7 @@ export default {
 
     // ウェルカムメッセージの送信
     this.socket.emit('welcome', { user: uuidv4() })
-
+    console.log('bbb')
     // メッセージ受信
     this.socket.on('message', (data) => {
       this.showBotInput(data)
@@ -72,6 +72,7 @@ export default {
       }
       this.showUserInput()
       // send message to server
+      console.log('aaa')
       this.socket.emit('message', this.input)
       this.sending = true
       this.input = ''
