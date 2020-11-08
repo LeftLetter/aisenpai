@@ -31,6 +31,15 @@
     "editor.insertSpaces": true,
     "[json]": {
       "editor.tabSize": 2,
+      "editor.formatOnSave": true,
+    },
+    "[jsonc]": {
+      "editor.formatOnSave": true,
+      "editor.quickSuggestions": {
+        "strings": true
+      },
+      "editor.suggest.insertMode": "replace",
+      "editor.tabSize": 2
     },
     "[python]": {
       "editor.codeActionsOnSave": {

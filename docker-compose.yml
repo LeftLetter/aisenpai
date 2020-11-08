@@ -8,7 +8,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/workspace
-      - ui-extensions:/root/.vscode-server
+      # - ui-extensions:/root/.vscode-server
     command: /bin/sh -c "while sleep 1000; do :; done"
     ports:
       - "12222:8000"
@@ -21,7 +21,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/workspace
-      - scenario-server-extensions:/root/.vscode-server
+      # - scenario-server-extensions:/root/.vscode-server
     command: /bin/sh -c "while sleep 1000; do :; done"
     ports:
       - "14444:3000"
@@ -33,7 +33,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/workspace
-      - api-server-extensions:/root/.vscode-server
+      # - api-server-extensions:/root/.vscode-server
     command: /bin/sh -c "while sleep 1000; do :; done"
     ports:
       - "15555:5000"
@@ -44,7 +44,7 @@ services:
     volumes:
       - api-server-cache:/bitnami/etcd
 volumes:
-  ui-extensions:
-  scenario-server-extensions:
-  api-server-extensions:
+  # ui-extensions:
+  # scenario-server-extensions:
+  # api-server-extensions:
   api-server-cache:
